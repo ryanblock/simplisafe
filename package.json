@@ -1,6 +1,6 @@
 {
   "name": "simplisafe",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Client module for controlling Simplisafe alarm systems (model year 2018+)",
   "main": "src/index.js",
   "scripts": {
