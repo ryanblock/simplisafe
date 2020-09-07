@@ -26,7 +26,7 @@ let simplisafe = require('simplisafe')
 
 ## Configuration
 
-Calls must be made with a configuration set either as environment variables, or passed in the parameters of the method in question.
+`simplisafe` must be used with configuration set via either environment variables, or passed as parameters. (If both are supplied, the environment variable will win.)
 
 
 ### Environment variables
@@ -44,9 +44,9 @@ To work with `simplisafe` locally, I suggest setting up your variables with [dot
 
 The following configuration keys are **required** if not using the environment variables noted above:
 
-- `email` - - **string** - the email associated with your Simplisafe account
-- `password` - - **string** - your Simplisafe password
-- `sessionID` - - **string** - validated session ID (see [authorization](#authorization) below)
+- `email` - **string** - the email associated with your Simplisafe account
+- `password` - **string** - your Simplisafe password
+- `sessionID` - **string** - validated session ID (see [authorization](#authorization) below)
 
 
 ### Tokens
