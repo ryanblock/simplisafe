@@ -42,7 +42,7 @@ To work with `simplisafe` locally, I suggest setting up your variables with [dot
 
 ### Config object
 
-The following configuration keys are **required** if not passing the environment variables noted above:
+The following configuration keys are **required** if not using the environment variables noted above:
 
 - `email` - - **string** - the email associated with your Simplisafe account
 - `password` - - **string** - your Simplisafe password
@@ -59,7 +59,24 @@ Simplisafe's API uses short-lived tokens; `simplisafe` returns a `token` **strin
 
 ## API
 
+### Methods
+
+**[Authorization](#authorization)**
+- `simplisafe.authorize`
+- `simplisafe.logout`
+
+**[Status / info](#status--info)**
+- `simplisafe.status`
+- `simplisafe.systems`
+
+**[Arm / disarm](#arm--disarm)**
+- `simplisafe.arm`
+- `simplisafe.disarm`
+
+---
+
 ### Authorization
+
 #### `simplisafe.authorize([params][, callback])` → `[Promise]`
 #### ⚠️ Required step!
 
@@ -111,6 +128,7 @@ simplisafe.logout({
 }, console.log)
 ```
 
+---
 
 ### Status / info
 
@@ -167,6 +185,7 @@ simplisafe.systems(console.log)
 // }
 ```
 
+---
 
 ### Arm / disarm
 
@@ -253,10 +272,12 @@ const simplisafe = require('simplisafe')
 ---
 
 ## Acknowledgments
+
 Big ups to [Aaron Bach](https://github.com/bachya)'s [simplisafe-python](https://github.com/bachya/simplisafe-python) project for paving the way, and to [Justin Searls](https://github.com/searls) for `npm simplisafe`
 
 
 ## Notes
+
 ¹ `simplisafe` uses Simplisafe's unpublished API; if you'd like to contribute additional features or functionality, I suggest using their web client and monitoring request/response traffic, or checking out [simplisafe-python](https://github.com/bachya/simplisafe-python)
 
 - This module was tested with a 2020-era Simplisafe system
