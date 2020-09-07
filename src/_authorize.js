@@ -37,6 +37,7 @@ module.exports = function authorize (params, callback) {
   let sessionID = process.env.SIMPLISAFE_SESSION_ID || (config && config.sessionID)
   if (!sessionID) {
     sessionID = createUUID()
+    process.env.SIMPLISAFE_SESSION_ID = sessionID
     console.log(`Created new sessionID, add this to your config or SIMPLISAFE_SESSION_ID env var: ${sessionID}`)
   }
 

@@ -80,17 +80,18 @@ Simplisafe's API uses short-lived tokens; `simplisafe` returns a `token` **strin
 #### `simplisafe.authorize([params][, callback])` → `[Promise]`
 #### ⚠️ Required step!
 
-Before you can use `simplisafe`, you'll have to authorize a session (i.e. your `SIMPLISAFE_SESSION_ID`, which is just a unique identifier that you'll continue reusing). **You only need to authorize a session one time** – you should not attempt continued / ongoing reauthorization attempts.
+Before you can use `simplisafe`, you'll have to authorize a session (i.e. your `SIMPLISAFE_SESSION_ID`, which is just a unique identifier that you'll continue reusing). **You only need to authorize a session one time** – you should not attempt continued / ongoing reauthorization attempts for each invocation.
 
 If passed, params must be an **object**; this object may contain a `config` **object**.
 
 Calls back or returns **error** or **string** of the authorized session ID.
 
-To authorize an session, you must run `simplisafe.authorize` once with valid credentials, then authorize the session from the email Simplisafe will send to your account's email address.
+To authorize an session, you must run `simplisafe.authorize` once with valid credentials, then complete authorization of the session by clicking the email Simplisafe will send to your account's email address.
 
 - First, assuming your configuration env vars are set, initiate the request for an auth code by calling: `simplisafe.authorize()`
 - Alternately, if passing a config object, initiate the request for an auth code by calling: `simplisafe.authorize({config: {...})`
-- Go check your email and click the verificaiton link; you should now have an authorized session!
+- Save the session ID (which is a standard UUID, e.g. `a1b2c3d4-9038-4a0b-b4cf-5bb60355d2ee`) to your env vars or config for future use
+- Go check your email and click the verification link; you should now have an authorized session!
 
 > ⚠️ **Warning:** if you change your `SIMPLISAFE_SESSION_ID`, or don't make use of that session for an extended period of time, you'll have to repeat the authorization process again.
 
@@ -103,6 +104,7 @@ simplisafe.authorize({
     password
   }
 }, console.log)
+// a1b2c3d4-9038-4a0b-b4cf-5bb60355d2ee
 ```
 
 
