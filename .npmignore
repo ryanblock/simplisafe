@@ -1,0 +1,8 @@
+.DS_Store
+.env
+.eslintrc.js
+.github/
+node_modules/
+scripts/
+scratch/
+test/

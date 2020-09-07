@@ -1,0 +1,15 @@
+let { join } = require('path')
+let test = require('tape')
+let sut = join(process.cwd(), 'src')
+let simplisafe = require(sut)
+
+test('Set up env', t => {
+  t.plan(7)
+  t.ok(simplisafe, 'Simplisafe entry is present')
+  t.ok(simplisafe.authorize, 'Got authorize method')
+  t.ok(simplisafe.arm, 'Got arm method')
+  t.ok(simplisafe.disarm, 'Got disarm method')
+  t.ok(simplisafe.status, 'Got status method')
+  t.ok(simplisafe.systems, 'Got systems method')
+  t.ok(simplisafe.logout, 'Got logout method')
+})
