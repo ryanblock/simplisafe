@@ -1,6 +1,6 @@
 let tiny = require('tiny-json-http')
 let session = require('./util/session')
-let series = require('run-series')
+let waterfall = require('run-waterfall')
 let { apiBase, userAgent } = require('./util/constants')
 
 module.exports = function logout (params={}, callback) {
@@ -22,11 +22,10 @@ module.exports = function logout (params={}, callback) {
   function _getSystems (err, session) {
     if (err) callback(err)
     else {
-      let userID
       let { token } = session.token
       let { deviceID } = session.client
 
-      series([
+      waterfall([
         function getUserID (callback) {
           tiny.get({
             url: `${apiBase}/api/authCheck`,
@@ -36,13 +35,10 @@ module.exports = function logout (params={}, callback) {
             }
           }, function (err, result) {
             if (err) callback(err)
-            else {
-              userID = result.body.userId
-              callback()
-            }
+            else callback(null, result.body.userId)
           })
         },
-        function killToken (callback) {
+        function killToken (userID, callback) {
           tiny.del({
             url: `${apiBase}/users/${userID}/mobileDevices`,
             headers: {

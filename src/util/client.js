@@ -1,5 +1,8 @@
 let getSSID = require('./ssid')
 
+/**
+ * Common client request parameters
+ */
 module.exports = function clientParams (sessionID) {
   let ssid = getSSID(sessionID)
 

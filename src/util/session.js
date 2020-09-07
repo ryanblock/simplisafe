@@ -3,6 +3,9 @@ let { apiBase, userAgent } = require('./constants')
 let env = require('./env')
 let client = require('./client')
 
+/**
+ * Common session (and session-related data) getter
+ */
 module.exports = function getSession (params, callback) {
   env(params,
   function go (err, auth) {
@@ -24,6 +27,8 @@ module.exports = function getSession (params, callback) {
           appVersion,
         }
       }
+
+      // If a token was passed, just use that
       if (params.token) {
         session.token = {
           token: params.token,
@@ -31,6 +36,7 @@ module.exports = function getSession (params, callback) {
         }
         callback(null, session)
       }
+      // Otherwise, go grab one from the API
       else {
         tiny.post({
           url: `${apiBase}/api/token`,

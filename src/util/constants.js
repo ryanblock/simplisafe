@@ -1,3 +1,6 @@
+/**
+ * Shockingly, stuff that shouldn't change much
+ */
 module.exports = {
   apiBase: 'https://api.simplisafe.com/v1',
   userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) ' +
